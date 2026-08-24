@@ -1,0 +1,84 @@
+/* מיכל מרכזי */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center; /* מוודא שכל התוכן מיושר למרכז */
+}
+
+.auth-title {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* חשוב כדי שה-padding לא יחרוג מהרוחב */
+}
+
+/* כפתור כניסה */
+.auth-button.primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.google-button {
+    width: 100%;
+    padding: 12px;
+    display: flex !important; /* אילוץ ה-flex */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white !important; /* רקע לבן */
+    color: #333 !important;      /* צבע טקסט כהה כדי שיראו אותו! */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.google-button img {
+    width: 20px;
+    height: 20px;
+    display: block; /* מוודא שהתמונה לא תופסת מקום מיותר */
+}
+
+/* הקישור של "הירשם כאן" */
+.switch-text {
+  margin-top: 1rem;
+  color: #666;
+}
+
+.switch-text span {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 5px; /* מרווח קטן מהטקסט שלפניו */
+}
+
+.divider {
+  margin: 1rem 0;
+  color: #aaa;
+}
