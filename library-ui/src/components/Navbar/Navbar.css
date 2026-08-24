@@ -1,0 +1,68 @@
+.navbar {
+  height: 60px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between; /* לוגו ימינה, פעולות שמאלה */
+  align-items: center;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  direction: rtl; /* כיווניות עברית */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 20px;
+  color: #4f46e5;
+  white-space: nowrap; /* מונע מהלוגו לרדת שורה */
+}
+
+.nav-actions {
+  display: flex;
+  gap: 15px; /* מרווח קבוע בין הכפתורים */
+  align-items: center;
+  flex-shrink: 0; /* מונע מהאזור הזה להצטמק */
+  white-space: nowrap; /* הכל בשורה אחת */
+}
+
+.nav-actions button {
+  padding: 8px 20px;
+  border-radius: 25px; /* עיגול מושלם */
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #374151 !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap; /* מונע מהטקסט בתוך הכפתור לרדת שורה */
+}
+
+.nav-actions button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* כפתור התנתקות מיוחד */
+.logout-btn {
+  background: #ef4444 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.logout-btn:hover {
+  background: #dc2626 !important;
+}
+
+/* המשתמש המחובר */
+.user {
+  font-size: 14px;
+  color: #111827;
+  font-weight: 500;
+  margin-left: 10px;
+  white-space: nowrap;
+}

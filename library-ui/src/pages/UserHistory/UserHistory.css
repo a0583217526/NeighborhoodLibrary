@@ -1,0 +1,14 @@
+.history-container { padding: 2rem; direction: rtl; max-width: 800px; margin: auto; }
+.history-list { list-style: none; padding: 0; }
+.history-item { 
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  background: white; 
+  margin-bottom: 0.5rem; 
+  padding: 1rem; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-right: 5px solid #4a90e2; 
+}
+.date { font-weight: bold; color: #333; }
+.type { color: #4a90e2; font-weight: 600; }

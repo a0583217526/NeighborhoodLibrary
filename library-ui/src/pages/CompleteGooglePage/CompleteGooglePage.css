@@ -1,0 +1,109 @@
+/* קונטיינר מרכזי שממרכז את הכרטיס במסך */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px); /* מוריד את גובה ה-Navbar כדי שלא יהיה סקרול מיותר */
+  background-color: #f8f9fa;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* כרטיס הפורם */
+.auth-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  direction: rtl; /* תמיכה מלאה בעברית מימין לשמאל */
+}
+
+.auth-title {
+  font-size: 1.8rem;
+  color: #212529;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 24px;
+}
+
+/* תיבת תצוגה מקדימה לנתונים שכבר הגיעו מחשבון הגוגל */
+.google-user-preview {
+  background-color: #f1f3f5;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  text-align: right;
+  border: 1px solid #e9ecef;
+}
+
+.preview-row {
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.preview-row:last-child {
+  margin-bottom: 0;
+}
+
+.preview-label {
+  color: #495057;
+  font-weight: 600;
+  width: 65px;
+}
+
+.preview-value {
+  color: #212529;
+  word-break: break-all;
+}
+
+/* שדות קלט (Inputs) */
+.auth-input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.15);
+}
+
+/* כפתור שליחה ראשי */
+.auth-button.primary {
+  width: 100%;
+  padding: 14px;
+  background-color: #339af0;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 10px;
+}
+
+.auth-button.primary:hover {
+  background-color: #228be6;
+}
+
+.auth-button.primary:active {
+  transform: scale(0.98);
+}
