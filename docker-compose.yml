@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: library-main-db
+    environment:
+      POSTGRES_DB: library_users_db
+      POSTGRES_USER: library_admin
+      POSTGRES_PASSWORD: UserService123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_shared_data:/var/lib/postgresql/data
+
+  user-service:
+    build: ./userservice
+    container_name: user-service
+    ports:
+      - "9000:9000"
+    depends_on:
+      - postgres
+    environment:
+      SERVER_PORT: 9000
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/library_users_db
+      SPRING_DATASOURCE_USERNAME: library_admin
+      SPRING_DATASOURCE_PASSWORD: UserService123
+    volumes:
+      - .m2_cache:/root/.m2
+
+  book-service:
+    build: ./bookandloaningservice
+    container_name: book-service
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+      - user-service
+      - notification-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/library_books_db
+      SPRING_DATASOURCE_USERNAME: library_admin
+      SPRING_DATASOURCE_PASSWORD: UserService123
+    volumes:
+      - .m2_cache:/root/.m2
+
+  notification-service:
+    build: ./notification-service
+    container_name: email-service
+    ports:
+      - "8082:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/library_notifications_db
+      SPRING_DATASOURCE_USERNAME: library_admin
+      SPRING_DATASOURCE_PASSWORD: UserService123
+    volumes:
+      - .m2_cache:/root/.m2
+
+  ai-service:
+    build: ./smart-library-ai
+    container_name: smart-library-ai
+    ports:
+      - "9090:9090"
+    depends_on:
+      - postgres
+      - user-service
+      - book-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/library_ai_db
+      SPRING_DATASOURCE_USERNAME: library_admin
+      SPRING_DATASOURCE_PASSWORD: UserService123
+    volumes:
+      - .m2_cache:/root/.m2
+
+  library-ui:
+    build: ./library-ui
+    container_name: library-ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - book-service
+      - notification-service
+
+volumes:
+  postgres_shared_data:
+  .m2_cache:
