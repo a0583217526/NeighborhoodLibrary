@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: library-user-db
+    environment:
+      POSTGRES_DB: library_users_db
+      POSTGRES_USER: library_admin
+      POSTGRES_PASSWORD: UserService123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_user_data:/var/lib/postgresql/data
+
+  user-service:
+    build: ./userservice
+    container_name: user-service
+    ports:
+      - "9000:9000"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/library_users_db
+      SPRING_DATASOURCE_USERNAME: library_admin
+      SPRING_DATASOURCE_PASSWORD: UserService123
+
+  library-ui:
+    build: ./library-ui
+    container_name: library-ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+
+volumes:
+  postgres_user_data:
